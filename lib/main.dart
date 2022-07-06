@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/widgets/screens/tabs_screen_two.dart';
 import 'package:meals/widgets/screens/tabs_screens.dart';
 import './widgets/screens/category_meals_screen.dart';
 import 'package:meals/widgets/screens/categories_screen.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
               displayMedium: const TextStyle(
                 color: Color.fromRGBO(20, 51, 51, 1),
               ))),
-      home: const TabScreen(),
+      home: const TabScreenTwo(),
       routes: {
         CategoryMealsScreen.route: (context) => const CategoryMealsScreen(),
         MealDetailsScreen.route: (context) => const MealDetailsScreen()
