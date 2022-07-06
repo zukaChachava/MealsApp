@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '../models/meal.dart';
+import '../../models/meal.dart';
+import '../screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
 
   const MealItem({required this.meal, Key? key}) : super(key: key);
 
-  void selectMeal() {}
+  void selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(MealDetailsScreen.route, arguments: meal);
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       child: Card(
         elevation: 4,
         margin: const EdgeInsets.all(10),
@@ -50,8 +53,37 @@ class MealItem extends StatelessWidget {
                     overflow: TextOverflow.fade,
                   ),
                 ),
-              )
+              ),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Row(children: [
+                  const Icon(Icons.schedule),
+                  const SizedBox(
+                    width: 6,
+                  ),
+                  Text('${meal.duration} min'),
+                ]),
+                Row(children: [
+                  const Icon(Icons.work),
+                  const SizedBox(
+                    width: 6,
+                  ),
+                  Text(meal.complexity.name),
+                ]),
+                Row(children: [
+                  const Icon(Icons.attach_money),
+                  const SizedBox(
+                    width: 6,
+                  ),
+                  Text(meal.affordability.name),
+                ]),
+              ],
+            ),
           )
         ]),
       ),

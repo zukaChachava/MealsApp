@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+import '../../models/meal.dart';
+
+class MealDetailsScreen extends StatelessWidget {
+  static const route = '/meal';
+
+  const MealDetailsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Meal meal = ModalRoute.of(context)!.settings.arguments as Meal;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(meal.title),
+      ),
+      body: Column(children: [
+        Container(
+          padding: const EdgeInsets.all(20),
+          height: 300,
+          width: double.infinity,
+          child: Image.network(meal.imageUrl),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          child: Text(
+            "Ingredients",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
+        Container(
+          height: 200,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(10)),
+          width: double.infinity,
+          child: ListView.builder(
+              itemBuilder: (ctx, index) {
+                return Card(
+                  color: Colors.red,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(meal.ingredients[index]),
+                  ),
+                );
+              },
+              itemCount: meal.ingredients.length),
+        ),
+      ]),
+    );
+  }
+}

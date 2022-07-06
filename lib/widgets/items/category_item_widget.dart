@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meals/widgets/category_meals_widget.dart';
+import '../screens/category_meals_screen.dart';
 
-import '../models/category.dart';
+import '../../models/category.dart';
 
 class CategoryItemWidget extends StatelessWidget {
   final Category category;
@@ -12,7 +11,7 @@ class CategoryItemWidget extends StatelessWidget {
 
   void onTap(BuildContext context) {
     Navigator.of(context)
-        .pushNamed(CategoryMealsWidget.route, arguments: category);
+        .pushNamed(CategoryMealsScreen.route, arguments: category);
   }
 
   @override

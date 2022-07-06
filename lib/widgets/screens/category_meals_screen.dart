@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/category.dart';
-import 'package:meals/widgets/meal_item.dart';
-import '../dymmy_data/meals.dart';
+import 'package:meals/widgets/items/meal_item.dart';
+import '../../dymmy_data/meals.dart';
 
-class CategoryMealsWidget extends StatelessWidget {
+class CategoryMealsScreen extends StatelessWidget {
   static const route = '/categories';
 
-  Category? category;
-  CategoryMealsWidget({Key? key}) : super(key: key);
+  const CategoryMealsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    category = ModalRoute.of(context)!.settings.arguments as Category;
+    final Category category = ModalRoute.of(context)!.settings.arguments as Category;
     final filteredMeals =
-        meals.where((meal) => meal.categories.contains(category!.id)).toList();
+        meals.where((meal) => meal.categories.contains(category.id)).toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(category?.title ?? "test"),
+        title: Text(category.title),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
