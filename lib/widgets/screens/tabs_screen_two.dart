@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/widgets/items/main_drawer.dart';
 import 'package:meals/widgets/screens/categories_screen.dart';
 import 'package:meals/widgets/screens/favourites_screen.dart';
 
@@ -32,6 +33,7 @@ class _TabScreenTwoState extends State<TabScreenTwo> {
             .toString()
             .replaceFirst('Screen', '')),
       ),
+      drawer: const MainDrawer(),
       body: _pages[_selectedPageIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,

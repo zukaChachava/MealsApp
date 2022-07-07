@@ -12,6 +12,12 @@ class MealDetailsScreen extends StatelessWidget {
     final Meal meal = ModalRoute.of(context)!.settings.arguments as Meal;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.delete),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
       appBar: AppBar(
         title: Text(meal.title),
       ),
